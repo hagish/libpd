@@ -270,6 +270,32 @@ PD_FILES = \
 	pure-data/extra/cyclone/shared/unstable/fragile.c \
 	pure-data/extra/cyclone/shared/unstable/fringe.c \
 	pure-data/extra/cyclone/shared/unstable/loader.c \
+	pure-data/extra/oggread~/oggread~.c \
+	pure-data/extra/oggread~/libogg-1.3.1/src/bitwise.c \
+	pure-data/extra/oggread~/libogg-1.3.1/src/framing.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/analysis.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/bitrate.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/block.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/codebook.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/envelope.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/floor0.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/floor1.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/info.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/lookup.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/lpc.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/lsp.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/mapping0.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/mdct.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/psy.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/registry.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/res0.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/sharedbook.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/smallft.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/synthesis.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/vorbisenc.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/vorbisfile.c \
+	pure-data/extra/oggread~/libvorbis-1.3.4/lib/window.c
+
 
 PDJAVA_JAR_CLASSES = \
 	java/org/puredata/core/PdBase.java \
@@ -297,7 +323,10 @@ PDJAVA_JAR = libs/libpd.jar
 
 CFLAGS = -DPD -DHAVE_UNISTD_H -DUSEAPI_DUMMY -I./pure-data/src \
          -I./libpd_wrapper -I./libpd_wrapper/util $(PLATFORM_CFLAGS) \
-	 -I./pure-data/extra/cyclone/shared -I./pure-data/extra/cyclone/common
+	 -I./pure-data/extra/cyclone/shared -I./pure-data/extra/cyclone/common \
+	 -I./pure-data/extra/oggread~/libogg-1.3.1/include \
+	 -I./pure-data/extra/oggread~/libvorbis-1.3.4/include \
+	 -I./pure-data/extra/oggread~/libvorbis-1.3.4/lib
 
 .PHONY: libpd csharplib javalib clean clobber
 
