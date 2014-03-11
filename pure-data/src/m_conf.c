@@ -113,5 +113,6 @@ void conf_init(void)
     lrshift_tilde_setup();
     pique_setup();
     sigmund_tilde_setup();
+    oggread_tilde_setup();
 }
 
