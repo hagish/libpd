@@ -51,6 +51,13 @@ void d_misc_setup(void);
 void d_osc_setup(void);
 void d_soundfile_setup(void);
 void d_ugen_setup(void);
+void bonk_tilde_setup(void);
+void choice_setup(void);
+void fiddle_tilde_setup(void);
+void loop_tilde_setup(void);
+void lrshift_tilde_setup(void);
+void pique_setup(void);
+void sigmund_tilde_setup(void);
 
 void conf_init(void)
 {
@@ -98,5 +105,13 @@ void conf_init(void)
     d_osc_setup();
     d_soundfile_setup();
     d_ugen_setup();
+    
+    bonk_tilde_setup();
+    choice_setup();
+    fiddle_tilde_setup();
+    loop_tilde_setup();
+    lrshift_tilde_setup();
+    pique_setup();
+    sigmund_tilde_setup();
 }
 

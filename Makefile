@@ -69,7 +69,16 @@ PD_FILES = \
 	pure-data/src/x_midi.c pure-data/src/x_misc.c pure-data/src/x_net.c \
 	pure-data/src/x_qlist.c pure-data/src/x_time.c \
 	libpd_wrapper/s_libpdmidi.c libpd_wrapper/x_libpdreceive.c \
-	libpd_wrapper/z_libpd.c 
+	libpd_wrapper/z_libpd.c \
+	pure-data/extra/bonk~/bonk~.c \
+	pure-data/extra/choice/choice.c \
+	pure-data/extra/fiddle~/fiddle~.c \
+	pure-data/extra/loop~/loop~.c \
+	pure-data/extra/lrshift~/lrshift~.c \
+	pure-data/extra/pd~/pdsched.c \
+	pure-data/extra/pd~/pd~.c \
+	pure-data/extra/pique/pique.c \
+	pure-data/extra/sigmund~/sigmund~.c
 
 PDJAVA_JAR_CLASSES = \
 	java/org/puredata/core/PdBase.java \
