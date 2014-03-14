@@ -1,3 +1,11 @@
+ATTENTION this is work in progress. 
+
+The purpose of this fork is to bundle the vanilla libpd 
+with some extensions useful for game audio like oggread and provide binaries for win/linux/mac. 
+These should be possible to use in a commercial product. Currently it is very likely that there are some license issues.
+
+---
+
 For documentation of libpd, see the wiki: https://github.com/libpd/libpd/wiki
 
 Layout of the libpd repository:
