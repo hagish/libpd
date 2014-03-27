@@ -59,7 +59,10 @@
 #define     OUTPUT_BUFFER_SIZE 		65536   	/* audio output buffer: 64k */
 
 static char   *oggread_version = "oggread~: ogg/vorbis file reader version 0.2c, written by Olaf Matthes";
-
+        
+int open_via_path(const char *dir, const char *name, const char *ext,
+    char *dirresult, char **nameresult, unsigned int size, int bin);
+    	
 /* ------------------------ oggread~ ----------------------------- */
 
 static t_class *oggread_class;
@@ -295,11 +298,39 @@ static void oggread_open(t_oggread *x, t_symbol *filename)
 	getcwd(cwd, 255);
 	post("cwd: %s", cwd);
 	free(cwd);
-		/* open file for reading */
+	
+	// StreamingAssets prefix hack, if the filename contains StreamingAssets
+	// the head including StreamingAssets got stripped
+	// /whatever/StreamingAssets/test/lala.ogg -> test/lala.ogg
+	char parsed_filename[MAXPDSTRING];
+	
+	char *substr_ptr = strstr(filename->s_name, "StreamingAssets");
+	if (substr_ptr != NULL) {
+		strncpy(parsed_filename, substr_ptr + strlen("StreamingAssets") + 1, MAXPDSTRING - 1);
+	} else {
+		strncpy(parsed_filename, filename->s_name, MAXPDSTRING - 1);
+	}
+	
+	/* search for file in paths */
+	char dirbuf[MAXPDSTRING], *nameptr;
+    int fd = open_via_path("", parsed_filename, "", dirbuf, &nameptr, MAXPDSTRING, 1);
+    
+    post("oggread~: parsed filename: %s", parsed_filename);
+    if (fd > 0) {
+		int dirbuf_len = strlen(dirbuf);
+		dirbuf[dirbuf_len] = '/';
+		++dirbuf_len;
+		strncpy(dirbuf + dirbuf_len, parsed_filename, MAXPDSTRING - dirbuf_len - 3);
+		close(fd);
+	} else {
+		strncpy(dirbuf, parsed_filename, MAXPDSTRING - 1);
+	}
+	post("oggread~: filename after search: %s", dirbuf);
+	
 #ifdef WIN32
-	if((x->x_file = fopen(filename->s_name, "rb")) < 0)
+	if((x->x_file = fopen(dirbuf, "rb")) < 0)
 #else
-   if((x->x_file = fopen(filename->s_name, "r")) < 0)
+	if((x->x_file = fopen(dirbuf, "r")) < 0)
 #endif
     {
 		post("oggread~: could not open file \"%s\"", filename->s_name);
