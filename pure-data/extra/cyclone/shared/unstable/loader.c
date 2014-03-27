@@ -45,7 +45,7 @@ static char sys_dllextent[] =
 #ifdef MACOSX
     ".pd_darwin";
 #endif
-#ifdef NT
+#if defined(NT) || defined(WIN32)
     ".dll";
 #endif
 

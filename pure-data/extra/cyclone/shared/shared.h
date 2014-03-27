@@ -25,7 +25,7 @@
 
 typedef unsigned long shared_t_bitmask;
 
-#ifdef __linux__
+#if defined(__linux__)
 #include <sys/types.h>
 #ifndef int32
 typedef int32_t int32;
@@ -55,7 +55,7 @@ typedef u_int8_t uchar;
 #endif
 #endif
 
-#ifdef NT
+#if defined(NT) || defined(WIN32)
 #ifndef int32
 typedef long int32;
 #endif
