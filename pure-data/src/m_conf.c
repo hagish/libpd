@@ -114,5 +114,10 @@ void conf_init(void)
     pique_setup();
     sigmund_tilde_setup();
     oggread_tilde_setup();
+
+    // LGPL
+    expr_setup();
+    expr_tilde_setup();
+    fexpr_tilde_setup();
 }
 
